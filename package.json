@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "deploy": "aws s3 sync . s3://benteogolav.no --region eu-west-1 --profile olav --acl public-read"
+  }
+}
