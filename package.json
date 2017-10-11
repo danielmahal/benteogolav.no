@@ -1,5 +1,6 @@
 {
   "scripts": {
-    "deploy": "aws s3 sync . s3://benteogolav.no --region eu-west-1 --profile olav --acl public-read"
+    "deploy": "aws s3 sync src s3://benteogolav.no --region eu-west-1 --profile olav --acl public-read",
+    "clean": "aws s3 rm s3://benteogolav.no --region eu-west-1 --profile olav --recursive"
   }
 }
