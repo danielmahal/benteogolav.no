@@ -1,0 +1,78 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Påmelding — Bente & Olav</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i" rel="stylesheet">
+    <meta property="og:image" content="//benteogolav.no/images/IMG_1061.jpg" />
+    <meta property="og:title" content="Påmelding — Bente & Olav"/>
+    <meta property="og:description" content="Vi gifter oss 16. juni 2018. Vielsen holdes i Bekkelaget kirke kl. 14.30 med påfølgende middag og fest på Ingierstrand Bad Restaurant"/>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main>
+      <header class="header">
+        <nav>
+          <ul>
+            <li>
+              <a href="index.html">
+                <span>Bente og Olav</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <h1>Påmelding</h1>
+      </header>
+
+      <form>
+        <div class="row">
+          <label>
+            <div class="label">Navn</div>
+            <input type="text" name="name" required autofocus />
+          </label>
+        </div>
+
+        <div class="row">
+          <label>
+            <div class="label">Merknader</div>
+            <textarea name="notice" rows="1" placeholder="allergier eller andre ting…"></textarea>
+          </label>
+        </div>
+
+        <div class="row">
+          <input type="submit" value='Meld på' />
+        </div>
+      </form>
+    </main>
+  </body>
+
+  <!-- <script src="decoration.js"></script> -->
+  <script src="https://unpkg.com/autosize@4.0.0/dist/autosize.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyChhnY91nE9Kx2xSF3F8WcO0FBo9HzXZtU",
+      authDomain: "benteogolav.firebaseapp.com",
+      databaseURL: "https://benteogolav.firebaseio.com",
+      projectId: "benteogolav",
+      storageBucket: "",
+      messagingSenderId: "754560410009"
+    }
+
+    firebase.initializeApp(config)
+
+    const form = document.querySelector('form')
+    const notice = form.querySelector('[name=notice]')
+
+    autosize(notice)
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      alert('TODO: Save and display confirmation with button to sign up more people')
+    })
+  </script>
+</html>

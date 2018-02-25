@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Øyeblikk — Bente & Olav</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+    <meta property="og:image" content="//benteogolav.no/images/IMG_1061.jpg" />
+    <meta property="og:title" content="Øyeblikk — Bente & Olav"/>
+    <meta property="og:description" content="Vi gifter oss 16. juni 2018. Vielsen holdes i Bekkelaget kirke kl. 14.30 med påfølgende middag og fest på Ingierstrand Bad Restaurant"/>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main>
+      <header class="header">
+        <nav>
+          <ul>
+            <li>
+              <a href="index.html">
+                <span>Bente og Olav</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <h1>Øyeblikk</h1>
+      </header>
+
+      <figure class="moment">
+        <img src="http://www.placecage.com/500/500" />
+        <figcaption>
+          <em>2005/2006 Møte Lambertseter skole</em> —
+          Første møte mellom Olav og Bente var på Lambertseter videregående skole. Olav så Bente første gang som konferansier på internasjonal dag. Bente trodde Olav var lillebroren til Aksel Hennie men var litt skeptisk til at garderoben kun bestod av joggeklær med dekknavn til russebussen på.
+        </figcaption>
+      </figure>
+
+      <figure class="moment">
+        <img src="http://www.placecage.com/500/500" />
+        <figcaption>
+          <em>2005/2006 Møte Lambertseter skole</em> —
+          Første møte mellom Olav og Bente var på Lambertseter videregående skole. Olav så Bente første gang som konferansier på internasjonal dag. Bente trodde Olav var lillebroren til Aksel Hennie men var litt skeptisk til at garderoben kun bestod av joggeklær med dekknavn til russebussen på.
+        </figcaption>
+      </figure>
+
+      <figure class="moment">
+        <img src="http://www.placecage.com/500/500" />
+        <figcaption>
+          <em>2005/2006 Møte Lambertseter skole</em> —
+          Første møte mellom Olav og Bente var på Lambertseter videregående skole. Olav så Bente første gang som konferansier på internasjonal dag. Bente trodde Olav var lillebroren til Aksel Hennie men var litt skeptisk til at garderoben kun bestod av joggeklær med dekknavn til russebussen på.
+        </figcaption>
+      </figure>
+    </main>
+
+    <script>
+      NodeList.prototype.forEach = Array.prototype.forEach
+
+      document.querySelectorAll('.moment').forEach(moment => {
+        moment.style.transform = `rotate(${(Math.random() - 0.5) * 10}deg) scale(${0.9 + Math.random() * 0.1})`
+      })
+    </script>
+  </body>
+
+  <script src="decoration.js"></script>
+</html>
