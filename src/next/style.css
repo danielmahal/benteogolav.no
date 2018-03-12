@@ -188,18 +188,52 @@ label textarea:focus {
   background: rgba(255, 255, 255, 1);
 }
 
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] + label {
+  position: relative;
+  text-align: left;
+  max-width: 18em;
+  padding-left: 2.5em;
+}
+
+input[type=checkbox] + label:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  width: 1.5em;
+  height: 1.5em;
+  background: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+input[type=checkbox]:hover + label:before {
+  background: white;
+}
+
+input[type=checkbox]:checked + label:before {
+  content: "✓";
+  color: #11033C;
+}
+
 input[type=submit] {
   border: 0;
-  border: 1px #11033C solid;
-  background: transparent;
+  background: #11033C;
+  color: #FFE4DA;
   cursor: pointer;
   font: inherit;
   padding: 0.5em 1em;
 }
 
 input[type=submit]:hover {
-  background: #11033C;
-  color: #FFE4DA;
+  color: #11033C;
+  background: white;
 }
 
 .moment {
