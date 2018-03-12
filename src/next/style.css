@@ -9,7 +9,7 @@ body {
   justify-content: center;
   padding-bottom: 10vh;
   box-sizing: border-box;
-  background: Gold;
+  background: #F2F1F0;
 }
 
 ::selection {
@@ -39,6 +39,10 @@ h2 {
 h1:after {
   content: "✾";
   display: block;
+}
+
+p {
+  margin: 1.5em 0;
 }
 
 em {
@@ -92,8 +96,9 @@ nav ul li a:hover span:after {
 
 article {
   padding: 0 1em;
-  max-width: 32em;
+  max-width: 22em;
   margin: 0 auto;
+  text-align: center;
 }
 
 article section {
@@ -141,7 +146,7 @@ textarea {
   border: 0;
   outline: none;
   text-align: center;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.8);
   resize: none;
   cursor: initial;
 }
@@ -154,12 +159,12 @@ textarea::placeholder {
 
 label:hover input[type=text],
 label:hover textarea {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 1);
 }
 
 label input[type=text]:focus,
 label textarea:focus {
-  background: white;
+  background: rgba(255, 255, 255, 1);
 }
 
 input[type=submit] {
