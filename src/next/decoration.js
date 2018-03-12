@@ -64,11 +64,11 @@ function step (time = 0) {
 
     if (agent.life <= 0) {
       const count = 2
-      const spread = Math.random() * Math.PI / 8
+      const spread = Math.random() * Math.PI / 6
 
       agents.splice(agents.indexOf(agent), 1)
 
-      if (agents.length < 20) {
+      if (agents.length < 20 && time < 20000) {
         for (let i = 0; i < count; i++) {
           const angle = (agent.angle - spread / 2) + (i / (count - 1)) * spread
 
