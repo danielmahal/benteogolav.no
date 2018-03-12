@@ -4,20 +4,23 @@ const canvas = document.createElement('canvas')
 const context = canvas.getContext('2d')
 
 const agents = [{
-  life: Math.random() * 40,
+  life: Math.random() < 0.2 ? Math.random() * 200 + 100 : Math.random() * 5,
   angle: Math.PI * 2 * Math.random(),
   x: Math.random() * window.innerWidth * pixelRatio,
   y: Math.random() * window.innerHeight * pixelRatio
 }]
 
 function step (time = 0) {
+  context.strokeStyle = `white`
+  context.fillStyle = context.strokeStyle
+
   window.requestAnimationFrame(step)
 
   agents.forEach(agent => {
     agent.angle += Math.random() * 0.4 - 0.2
 
-    const dx = Math.sin(agent.angle) * pixelRatio * 2
-    const dy = Math.cos(agent.angle) * pixelRatio * 2
+    const dx = Math.sin(agent.angle) * pixelRatio * 3
+    const dy = Math.cos(agent.angle) * pixelRatio * 3
 
     agent.x += dx
     agent.y += dy
@@ -40,25 +43,32 @@ function step (time = 0) {
       agent.y = 0
     }
 
-    const sample = context.getImageData(agent.x, agent.y, 1, 1)
-    const alpha = sample.data[3]
-    const available = alpha <= 0
-
     context.save()
     context.translate(agent.x, agent.y)
+
     context.beginPath()
     context.moveTo(0, 0)
     context.lineTo(-dx, -dy)
     context.stroke()
+
+    if (Math.random() > 0.5) {
+      const size = Math.random() * 10
+      context.translate((Math.random() - 0.5) * 6, (Math.random() - 0.5) * 6)
+      context.rotate(Math.random() * Math.PI * 2)
+      context.beginPath()
+      context.rect(-size / 2, -size / 2, size, size)
+      context.fill()
+    }
+
     context.restore()
 
-    if (agent.life <= 0 || !available) {
+    if (agent.life <= 0) {
       const count = 2
-      const spread = Math.random() * Math.PI / 4
+      const spread = Math.random() * Math.PI / 8
 
       agents.splice(agents.indexOf(agent), 1)
 
-      if (available && agents.length < 20) {
+      if (agents.length < 10) {
         for (let i = 0; i < count; i++) {
           const angle = (agent.angle - spread / 2) + (i / (count - 1)) * spread
 
@@ -78,7 +88,6 @@ window.addEventListener('load', () => {
   document.body.appendChild(canvas)
   canvas.width = window.innerWidth * pixelRatio
   canvas.height = window.innerHeight * pixelRatio
-  context.strokeStyle = 'rgba(255, 255, 255, 0.6)'
   context.lineWidth = pixelRatio * 1
   step()
 })
