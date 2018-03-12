@@ -11,7 +11,7 @@ const agents = [{
 }]
 
 function step (time = 0) {
-  context.strokeStyle = `white`
+  context.strokeStyle = `rgba(255, 255, 255, 0.3)`
   context.fillStyle = context.strokeStyle
 
   window.requestAnimationFrame(step)
@@ -68,7 +68,7 @@ function step (time = 0) {
 
       agents.splice(agents.indexOf(agent), 1)
 
-      if (agents.length < 10) {
+      if (agents.length < 20) {
         for (let i = 0; i < count; i++) {
           const angle = (agent.angle - spread / 2) + (i / (count - 1)) * spread
 
