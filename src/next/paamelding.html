@@ -30,58 +30,92 @@
         <h2>Svarfrist 1. mai</h2>
       </header>
 
-
-      <form>
+      <form method="post" action="'https://docs.google.com/forms/d/1HYWK76jv2RScx__j2mAKQGUaCJ6FDRfsRL2BN2sbzgM/formResponse'">
         <div class="row">
           <label>
             <div class="label">Navn</div>
-            <input type="text" name="name" placeholder="deg og ditt følge" required />
+            <input type="text" name="entry.1492385691" placeholder="deg og ditt følge" required />
           </label>
         </div>
 
         <div class="row">
           <label>
             <div class="label">Merknader</div>
-            <textarea name="notice" rows="1" placeholder="allergier eller andre ting…"></textarea>
+            <textarea name="entry.804235057" rows="1" placeholder="allergier eller andre ting…"></textarea>
           </label>
         </div>
 
         <div class="checkbox row">
-          <input type="checkbox" id='bus' />
-          <label for='bus'>Ønsker plass på buss mellom Bekkelaget Kirke og Ingierstrand Bad Restraurant</label>
+          <input type="checkbox" name="entry.1336427063" id="bus" />
+          <label for="bus">Ønsker plass på buss mellom Bekkelaget Kirke og Ingierstrand Bad Restraurant</label>
         </div>
 
-        <div class="row">
-          <input type="submit" value='Meld på' />
-        </div>
+        <input type="submit" value="Meld på" />
       </form>
     </main>
   </body>
 
-  <!-- <script src="decoration.js"></script> -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
   <script src="https://unpkg.com/autosize@4.0.0/dist/autosize.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
   <script>
-    var config = {
-      apiKey: "AIzaSyChhnY91nE9Kx2xSF3F8WcO0FBo9HzXZtU",
-      authDomain: "benteogolav.firebaseapp.com",
-      databaseURL: "https://benteogolav.firebaseio.com",
-      projectId: "benteogolav",
-      storageBucket: "",
-      messagingSenderId: "754560410009"
-    }
+    NodeList.prototype.map = Array.prototype.map
+    NodeList.prototype.forEach = Array.prototype.forEach
 
-    firebase.initializeApp(config)
-
-    const form = document.querySelector('form')
-    const notice = form.querySelector('[name=notice]')
+    var main = document.querySelector('main')
+    var form = main.querySelector('form')
+    var notice = form.querySelector('[name="entry.804235057"]')
+    var submit = form.querySelector('[type=submit]')
 
     autosize(notice)
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', function (e) {
       e.preventDefault()
-      alert('TODO: Save and display confirmation with button to sign up more people')
+
+      clearMessages()
+
+      submit.disabled = true
+      submit.value = 'Melder på…'
+
+      // var url = form.action
+      //
+      // var options = {
+      //   method: 'POST',
+      //   mode: 'no-cors',
+      //   body: new FormData(form)
+      // }
+      //
+      // window.fetch(url, options)
+      //   .then(onSuccess)
+      //   .catch(onError)
+
+      setTimeout(function () {
+        onError()
+      }, 500)
     })
+
+    function onSuccess () {
+      form.style.display = 'none'
+      main.appendChild(createMessage('Påmeldingen var vellykket. Vi ses 16. juni!'))
+    }
+
+    function onError () {
+      submit.disabled = false
+      submit.value = 'Meld på'
+      form.insertBefore(createMessage('Ops, noe gikk galt med påmeldingen! Vennligs prøv igjen om litt…'), submit)
+    }
+
+    function createMessage (text) {
+      var message = document.createElement('p')
+      message.innerText = text
+      message.className = 'message'
+      return message
+    }
+
+    function clearMessages () {
+      form.querySelectorAll('.message').forEach(function (element) {
+        form.removeChild(element)
+      })
+    }
   </script>
 
   <script src="decoration.js"></script>

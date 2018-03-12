@@ -1,9 +1,9 @@
-const pixelRatio = window.devicePixelRatio
+var pixelRatio = window.devicePixelRatio
 
-const canvas = document.createElement('canvas')
-const context = canvas.getContext('2d')
+var canvas = document.createElement('canvas')
+var context = canvas.getContext('2d')
 
-const agents = [{
+var agents = [{
   life: Math.random() < 0.2 ? Math.random() * 200 + 100 : Math.random() * 5,
   angle: Math.PI * 2 * Math.random(),
   x: Math.random() * window.innerWidth * pixelRatio,
@@ -11,16 +11,16 @@ const agents = [{
 }]
 
 function step (time = 0) {
-  context.strokeStyle = `rgba(255, 255, 255, 0.3)`
+  context.strokeStyle = `rgba(255, 255, 255, 0.6)`
   context.fillStyle = context.strokeStyle
 
   window.requestAnimationFrame(step)
 
-  agents.forEach(agent => {
+  agents.forEach(function (agent) {
     agent.angle += Math.random() * 0.4 - 0.2
 
-    const dx = Math.sin(agent.angle) * pixelRatio * 2
-    const dy = Math.cos(agent.angle) * pixelRatio * 2
+    var dx = Math.sin(agent.angle) * pixelRatio * 2
+    var dy = Math.cos(agent.angle) * pixelRatio * 2
 
     agent.x += dx
     agent.y += dy
@@ -51,9 +51,9 @@ function step (time = 0) {
     context.lineTo(-dx, -dy)
     context.stroke()
 
-    if (Math.random() > 0.5) {
-      const size = Math.random() * 10
-      context.translate((Math.random() - 0.5) * 6, (Math.random() - 0.5) * 6)
+    if (Math.random() > 0.7) {
+      var size = Math.random() * 10
+      context.translate((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20)
       context.rotate(Math.random() * Math.PI * 2)
       context.beginPath()
       context.rect(-size / 2, -size / 2, size, size)
@@ -63,14 +63,14 @@ function step (time = 0) {
     context.restore()
 
     if (agent.life <= 0) {
-      const count = 2
-      const spread = Math.random() * Math.PI / 6
+      var count = 2
+      var spread = Math.random() * Math.PI / 10
 
       agents.splice(agents.indexOf(agent), 1)
 
       if (agents.length < 20 && time < 20000) {
         for (let i = 0; i < count; i++) {
-          const angle = (agent.angle - spread / 2) + (i / (count - 1)) * spread
+          var angle = (agent.angle - spread / 2) + (i / (count - 1)) * spread
 
           agents.push({
             life: Math.random() * 10 + 5,
@@ -84,7 +84,7 @@ function step (time = 0) {
   })
 }
 
-window.addEventListener('load', () => {
+window.addEventListener('load', function () {
   document.body.appendChild(canvas)
   canvas.width = window.innerWidth * pixelRatio
   canvas.height = window.innerHeight * pixelRatio
