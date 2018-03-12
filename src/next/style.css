@@ -41,6 +41,10 @@ h1:after {
   display: block;
 }
 
+h2 {
+  font-size: 1.1em;
+}
+
 p {
   margin: 1.5em 0;
 }
@@ -82,30 +86,44 @@ nav ul li a span {
 nav ul li a span:after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0; right: 0;
+  bottom: 0.05em;
+  left: 0;
+  right: 0;
   padding: 0;
   display: inline-block;
-  border-bottom: 1px black solid;
-  display: none;
+  border-bottom: 1px rgba(0, 0, 0, 0.25) solid;
 }
 
 nav ul li a:hover span:after {
-  display: block;
+  border-color: black;
 }
 
 article {
   padding: 0 1em;
-  max-width: 22em;
-  margin: 0 auto;
+
   text-align: center;
 }
 
 article section {
+  max-width: 18em;
+  margin: 0 auto;
   margin-bottom: 4em;
 }
 
+article section p {
+  font-size: 0.75em;
+}
+
+article a {
+  color: inherit;
+}
+
 .plan {
+  font-size: 1em;
+  max-width: 22em;
+}
+
+.plan ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -129,10 +147,12 @@ label {
 }
 
 .label {
-  margin-bottom: 0.5em;
+  position: relative;
+  margin-bottom: -0.65em;
   font-size: 0.75em;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+  z-index: 2;
 }
 
 input[type=text],
@@ -140,7 +160,7 @@ textarea {
   border: 0;
   box-sizing: border-box;
   font: inherit;
-  padding: 1em;
+  padding: 0.75em;
   width: 100%;
   background: none;
   border: 0;
@@ -178,11 +198,11 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background: black;
-  color: gold;
+  color: #F2F1F0;
 }
 
 .moment {
-  padding: 1em;
+  padding: 0.5em;
   background: white;
   max-width: 500px;
   margin: 2em auto;
@@ -192,7 +212,7 @@ input[type=submit]:hover {
 .moment img {
   display: block;
   width: 100%;
-  margin-bottom: 0.8em;
+  margin-bottom: 0.5em;
 }
 
 .moment figcaption {
