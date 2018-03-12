@@ -19,8 +19,8 @@ function step (time = 0) {
   agents.forEach(agent => {
     agent.angle += Math.random() * 0.4 - 0.2
 
-    const dx = Math.sin(agent.angle) * pixelRatio * 3
-    const dy = Math.cos(agent.angle) * pixelRatio * 3
+    const dx = Math.sin(agent.angle) * pixelRatio * 2
+    const dy = Math.cos(agent.angle) * pixelRatio * 2
 
     agent.x += dx
     agent.y += dy

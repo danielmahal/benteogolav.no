@@ -9,7 +9,8 @@ body {
   justify-content: center;
   padding-bottom: 10vh;
   box-sizing: border-box;
-  background: #F2F1F0;
+  background: #FFE4DA;
+  color: #11033C;
 }
 
 ::selection {
@@ -95,7 +96,7 @@ nav ul li a span:after {
 }
 
 nav ul li a:hover span:after {
-  border-color: black;
+  border-color: #11033C;
 }
 
 article {
@@ -189,7 +190,7 @@ label textarea:focus {
 
 input[type=submit] {
   border: 0;
-  border: 1px black solid;
+  border: 1px #11033C solid;
   background: transparent;
   cursor: pointer;
   font: inherit;
@@ -197,8 +198,8 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background: black;
-  color: #F2F1F0;
+  background: #11033C;
+  color: #FFE4DA;
 }
 
 .moment {
