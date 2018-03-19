@@ -188,18 +188,21 @@ label textarea:focus {
   background: rgba(255, 255, 255, 1);
 }
 
-input[type=checkbox] {
+input[type=checkbox],
+input[type=radio] {
   display: none;
 }
 
-input[type=checkbox] + label {
+input[type=checkbox] + label,
+input[type=radio] + label {
   position: relative;
   text-align: left;
   max-width: 18em;
   padding-left: 2.5em;
 }
 
-input[type=checkbox] + label:before {
+input[type=checkbox] + label:before,
+input[type=radio] + label:before {
   content: "";
   position: absolute;
   top: 0;
@@ -213,11 +216,13 @@ input[type=checkbox] + label:before {
   text-align: center;
 }
 
-input[type=checkbox]:hover + label:before {
+input[type=checkbox]:hover + label:before,
+input[type=radio]:hover + label:before {
   background: white;
 }
 
-input[type=checkbox]:checked + label:before {
+input[type=checkbox]:checked + label:before,
+input[type=radio]:checked + label:before {
   content: "✓";
   color: #11033C;
 }

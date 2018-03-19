@@ -46,7 +46,12 @@
         </div>
 
         <div class="checkbox row">
-          <input type="checkbox" name="entry.1537642229" id="nei" />
+          <input type="radio" name="entry.1537642229" id="ja" value="yes" />
+          <label for="ja">Jeg/vi kommer i bryllupet</label>
+        </div>
+
+        <div class="checkbox row">
+          <input type="radio" name="entry.1537642229" id="nei" value="no" />
           <label for="nei">Jeg/vi kan IKKE komme i bryllupet</label>
         </div>
 
@@ -83,11 +88,6 @@
 
       var url = form.action
 
-      var f = new FormData(form)
-      f.forEach((val, key) => {
-        console.log(key, val)
-      })
-
       var options = {
         method: 'POST',
         mode: 'no-cors',
@@ -97,10 +97,6 @@
       window.fetch(url, options)
         .then(onSuccess)
         .catch(onError)
-
-      setTimeout(function () {
-        onError()
-      }, 500)
     })
 
     function onSuccess () {
