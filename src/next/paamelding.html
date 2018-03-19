@@ -2,13 +2,13 @@
 
 <html>
   <head>
-    <title>Påmelding — Bente & Olav</title>
+    <title>Svar — Bente & Olav</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#FFE4DA">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i" rel="stylesheet">
     <meta property="og:image" content="//benteogolav.no/images/IMG_1061.jpg" />
-    <meta property="og:title" content="Påmelding — Bente & Olav"/>
+    <meta property="og:title" content="Svar — Bente & Olav"/>
     <meta property="og:description" content="Vi gifter oss 16. juni 2018. Vielsen holdes i Bekkelaget kirke kl. 14.30 med påfølgende middag og fest på Ingierstrand Bad Restaurant"/>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -26,11 +26,11 @@
           </ul>
         </nav>
 
-        <h1>Påmelding</h1>
+        <h1>Svar</h1>
         <h2>Svarfrist 1. mai</h2>
       </header>
 
-      <form method="post" action="'https://docs.google.com/forms/d/1HYWK76jv2RScx__j2mAKQGUaCJ6FDRfsRL2BN2sbzgM/formResponse'">
+      <form method="post" action="https://docs.google.com/forms/d/1HYWK76jv2RScx__j2mAKQGUaCJ6FDRfsRL2BN2sbzgM/formResponse">
         <div class="row">
           <label>
             <div class="label">Navn</div>
@@ -43,6 +43,11 @@
             <div class="label">Merknader</div>
             <textarea name="entry.804235057" rows="1" placeholder="allergier eller andre ting…"></textarea>
           </label>
+        </div>
+
+        <div class="checkbox row">
+          <input type="checkbox" name="entry.1537642229" id="nei" />
+          <label for="nei">Jeg/vi kan IKKE komme i bryllupet</label>
         </div>
 
         <div class="checkbox row">
@@ -76,17 +81,22 @@
       submit.disabled = true
       submit.value = 'Melder på…'
 
-      // var url = form.action
-      //
-      // var options = {
-      //   method: 'POST',
-      //   mode: 'no-cors',
-      //   body: new FormData(form)
-      // }
-      //
-      // window.fetch(url, options)
-      //   .then(onSuccess)
-      //   .catch(onError)
+      var url = form.action
+
+      var f = new FormData(form)
+      f.forEach((val, key) => {
+        console.log(key, val)
+      })
+
+      var options = {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new FormData(form)
+      }
+
+      window.fetch(url, options)
+        .then(onSuccess)
+        .catch(onError)
 
       setTimeout(function () {
         onError()
