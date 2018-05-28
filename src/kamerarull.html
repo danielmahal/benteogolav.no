@@ -1,0 +1,114 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Kamerarull — Bente & Olav</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FFE4DA">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+    <meta property="og:image" content="//benteogolav.no/images/japan.jpg" />
+    <meta property="og:title" content="Kamerarull — Bente & Olav"/>
+    <meta property="og:description" content="Vi gifter oss 16. juni 2018. Vielsen holdes i Bekkelaget kirke kl. 14.30 med påfølgende middag og fest på Ingierstrand Bad Restaurant"/>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+
+  </head>
+
+  <body>
+    <main>
+      <header class="header">
+        <nav>
+          <ul>
+            <li>
+              <a href="index.html">
+                <span>Bente og Olav</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <h1>Kamerarull</h1>
+
+        <div id="react-root"></div>
+      </header>
+  </body>
+
+  <script src="decoration.js"></script>
+
+  <script type="text/babel">
+    // Initialize Firebase
+    const config = {
+      apiKey: "AIzaSyCSj8V3gS1BK1ZpT3W1CZhbYalt-ocVd1Y",
+      authDomain: "ambience-196508.firebaseapp.com",
+      databaseURL: "https://ambience-196508.firebaseio.com",
+      projectId: "ambience-196508",
+      storageBucket: "ambience-196508.appspot.com",
+      messagingSenderId: "461664467653"
+    };
+
+    firebase.initializeApp(config);
+
+    const storageRef = firebase.storage().ref();
+    const database = firebase.database().ref();
+
+    class Roll extends React.Component {
+
+      upload(event) {
+        const file = event.target.files[0];
+        const reader  = new FileReader();
+        reader.addEventListener('load', () => {
+          database.push(reader.result, () => {
+            // Upload .. twice ..
+            storageRef.child(file.name).put(file)
+          })
+        })
+        reader.readAsDataURL(file)
+      }
+
+      render() {
+        const roll = this.props.images.map(src =>
+          <figure key={src.slice(-10)} className="moment" style={{
+            transform: `scale(${0.9 + Math.random() * 0.1}) rotate(${(Math.random() - 0.5) * 10}deg)`
+          }}>
+            <img src={src} />
+          </figure>
+        );
+
+        return (
+          <div>
+            <p>Blinkskudd fra bryllupet? Del det gjerne med oss!</p>
+            <label htmlFor="upload" className="upload">
+              Del bilde
+            </label>
+            <input
+              type="file"
+              id="upload"
+              onChange={this.upload}
+              accept="image/*" />
+            {this.props.images.length ? roll : <h2>Laster bilder ..</h2>}
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+        <Roll images={[]} />,
+        document.getElementById('react-root')
+    );
+
+    database.limitToLast(5).on('value', function(snap) {
+      const results = snap.val() || [];
+      const images = Object.keys(results).map(key => results[key]).reverse();
+
+      ReactDOM.render(
+          <Roll images={images} />,
+          document.getElementById('react-root')
+      );
+    });
+  </script>
+</html>

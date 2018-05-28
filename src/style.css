@@ -17,6 +17,17 @@ body {
   background: LemonChiffon;
 }
 
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
 canvas {
   position: fixed;
   top: 0;
@@ -227,7 +238,13 @@ input[type=radio]:checked + label:before {
   color: #11033C;
 }
 
-input[type=submit] {
+.upload {
+  max-width: 7em;
+  margin: 0 auto;
+  text-align: center;
+}
+
+input[type=submit], .upload {
   border: 0;
   background: #11033C;
   color: #FFE4DA;
@@ -236,7 +253,7 @@ input[type=submit] {
   padding: 0.5em 1em;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, .upload:hover {
   color: #11033C;
   background: white;
 }
@@ -253,6 +270,7 @@ input[type=submit]:hover {
   display: block;
   width: 100%;
   margin-bottom: 0.5em;
+  image-orientation: from-image;
 }
 
 .moment figcaption {
